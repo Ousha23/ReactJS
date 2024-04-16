@@ -1,5 +1,7 @@
 import { plantList } from "../datas/plantList";
 import '../styles/ShoppingList.css';
+import PlantItem from "./PlantItem";
+import cover from '../assets/cover.jpg'
 
 function ShoppingList() {
     const categories = [];
@@ -15,12 +17,12 @@ function ShoppingList() {
                     <li key={index}>{category}</li>
                 ))}
             </ul>
-            <ul className='lmj-plant-list'>
-                {plantList.map((plant) => (
+            {<ul className='lmj-plant-list'>
+                {plantList.map((plant, index) => (
                     // <li key={plant.id}>{plant.name} {plant.isBestSale ? <span>🔥</span> : null}</li>
-                    <li key={plant.id} className='lmj-plant-item' >{plant.name} {plant.isSpecialOffer && <div className="lmj-sales">Soldes</div>}</li>
+                    <PlantItem key={index} name={plant.name} cover={cover} water={plant.water} light={plant.light}/>
                 ))}
-            </ul>
+            </ul>}
             
         </div>
     )
