@@ -1,4 +1,4 @@
-import React from "react";
+
 import '../styles/Banner.css'
 import logo from '../assets/logo.png'
 
