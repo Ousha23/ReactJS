@@ -1,4 +1,5 @@
 import React from "react";
+import '../styles/Cart.css'
 
 const Cart = () => {
     var priceMonstera = 8;
@@ -6,7 +7,7 @@ const Cart = () => {
     var priceBouquet = 15;
 
     return (
-        <div>
+        <div className="lmj-cart">
             <h2>Le panier</h2>
             <ul>
                 <li>Le Monstera : {priceMonstera}</li>
