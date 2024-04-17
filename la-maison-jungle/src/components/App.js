@@ -1,14 +1,18 @@
+import { useEffect, useState } from 'react'
 import Banner from './Banner'
 import logo from '../assets/logo.png'
 import Cart from './Cart'
 import Footer from './Footer'
 import ShoppingList from './ShoppingList'
-import { useState } from 'react'
 import '../styles/Layout.css'
 
 function App() {
-	const [cart, updateCart] = useState([])
-	const [category, filterCategory] = useState([])
+	const [activeCategory, setActiveCategory] = useState('')
+	const savedCart = localStorage.getItem('cart');
+	const [cart, updateCart] = useState(savedCart? JSON.parse(savedCart):[])
+	useEffect(()=> {
+		localStorage.setItem('cart', JSON.stringify(cart))
+	})
 	return (
 		<div>
 			<Banner>
@@ -16,13 +20,14 @@ function App() {
 				<h1 className='lmj-title'>La maison jungle</h1>
 			</Banner>
 			<div className='lmj-layout-inner'>
-				<Cart cart={cart} updateCart={updateCart} />
-				<ShoppingList cart={cart} updateCart={updateCart} category={category} filterCategory={filterCategory} />
+				<Cart cart={cart} updateCart={updateCart} activeCategory={activeCategory}/>
+				<ShoppingList cart={cart} updateCart={updateCart} activeCategory={activeCategory} setActiveCategory={setActiveCategory}/>
 			</div>
 			<Footer />
 		</div>
 	)
 }
+
 
 
 //---------- Déléguez le contrôle : les formulaires non contrôlés dans App
