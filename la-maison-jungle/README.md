@@ -68,3 +68,12 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+<!-- -------------------------TODO---------------------- : 
+Permettre de supprimer des articles dans le panier.
+
+Permettre de sélectionner plusieurs catégories.
+
+Afficher des informations supplémentaires au clic sur un article dans une modale.
+
+Ajouter du style : des animations pour ouvrir/fermer le panier, sur le header, personnaliser les boutons, etc. -->
