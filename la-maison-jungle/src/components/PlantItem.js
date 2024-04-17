@@ -1,24 +1,22 @@
 import CareScale from "./CareScale";
 import '../styles/PlantItem.css';
 
+
+function handleClick(plantName) {
+	alert(`Vous voulez acheter 1 ${plantName}? Très bon choix 🌱✨`)
+}
 //------------V1 on peut détailler les props dans la définition de la fonction 
-const PlantItem = ({ id, cover, name, water, light }) => {
-    
-    // function handleClick(name){
-    //     console.log("Ceci est mon clique"+ name)
-    // }
-    const handleClick = (e) => {
-        console.log("Ceci est mon event", e)
-    }
-    return (
-                <li key={id} className='lmj-plant-item' onClick = {handleClick}>
-                {/* <li key={id} className='lmj-plant-item' onClick = {() => handleClick()}></li> */}
-                    <img className='lmj-plant-item-cover' src={cover} alt={`${name} cover`} />
-			        {name}
-                    <CareScale careType='water' scaleValue={water} />
-                    <CareScale careType='light' scaleValue={light} />
-                </li>
-            )
+function PlantItem({ cover, name, water, light }) {
+	return (
+		<li className='lmj-plant-item' onClick={() => handleClick(name)}>
+			<img className='lmj-plant-item-cover' src={cover} alt={`${name} cover`} />
+			{name}
+			<div>
+				<CareScale careType='water' scaleValue={water} />
+				<CareScale careType='light' scaleValue={light} />
+			</div>
+		</li>
+	)
 }
 //-----------V2 on détaille à l'interieur de la fonction
 // const PlantItem = (props) => {
