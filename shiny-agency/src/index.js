@@ -7,17 +7,17 @@ import Header from './components/Header'
 import Error from './components/Error'
 import Results from './pages/Results'
 import Freelances from './pages/Freelances'
-import { createGlobalStyle } from 'styled-components'
+import GlobalStyle from './utils/style/GlobalStyle'
+import { ThemeProvider, SurveyProvider } from './utils/context'
+import Footer from './components/Footer'
 
-const GlobalStyle = createGlobalStyle`
-    * {
-        font-family: 'Trebuchet MS', Helvetica, sans-serif;
-    }
-`
+
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
+    <ThemeProvider>
+    <SurveyProvider>
       <GlobalStyle />
       <Header />
       <Routes>
@@ -27,6 +27,9 @@ ReactDOM.render(
         <Route path="/results" element={<Results />} />
         <Route path="/freelances" element={<Freelances />} />
       </Routes>
+      <Footer />
+      </SurveyProvider>
+      </ThemeProvider>
     </Router>
   </React.StrictMode>,
   document.getElementById('root')
