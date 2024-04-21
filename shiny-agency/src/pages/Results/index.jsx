@@ -52,7 +52,15 @@ const LoaderWrapper = styled.div`
   display: flex;
   justify-content: center;
 `
-function formatFetchParams(answers) {
+
+export function formatJobList(title, listLength, index) {
+  if (index === listLength - 1) {
+      return title
+  }
+  return `${title},`
+}
+
+export function formatFetchParams(answers) {
   const answerNumbers = Object.keys(answers)
 
   return answerNumbers.reduce((previousParams, answerNumber, index) => {
@@ -69,7 +77,8 @@ function Results() {
   const { data, isLoading, error } = useFetch(
     `http://localhost:8000/results/?${fetchParams}`
   )
-  // console.log(fetchParams);
+  console.log(answers);
+  console.log(fetchParams);
   
   if (error) {
     return <span>Il y a un problème</span>
@@ -92,8 +101,9 @@ function Results() {
               key={`result-title-${index}-${result.title}`}
               theme={theme}
             >
-              {result.title}
-              {index === resultsData.length - 1 ? '' : ','}
+              {/* {result.title}
+              {index === resultsData.length - 1 ? '' : ','} */}
+              {formatJobList(result.title, resultsData.length, index)}
             </JobTitle>
           ))}
       </ResultsTitle>
@@ -107,7 +117,7 @@ function Results() {
               theme={theme}
               key={`result-detail-${index}-${result.title}`}
             >
-              <JobTitle theme={theme}>{result.title}</JobTitle>
+              <JobTitle theme={theme} >{result.title}</JobTitle>
               <p>{result.description}</p>
             </JobDescription>
           ))}
